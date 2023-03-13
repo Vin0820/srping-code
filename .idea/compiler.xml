@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <option name="BUILD_PROCESS_HEAP_SIZE" value="1500" />
     <annotationProcessing>
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -8,13 +9,15 @@
         <outputRelativeToContentRoot value="true" />
         <module name="spring-step-02" />
         <module name="sring-step-01" />
+        <module name="spring-step-04" />
         <module name="spring-step-03" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spring-step-02" target="7" />
-      <module name="spring-step-03" target="1.5" />
-      <module name="sring-step-01" target="1.5" />
+      <module name="spring-step-02" target="8" />
+      <module name="spring-step-03" target="8" />
+      <module name="spring-step-04" target="8" />
+      <module name="sring-step-01" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

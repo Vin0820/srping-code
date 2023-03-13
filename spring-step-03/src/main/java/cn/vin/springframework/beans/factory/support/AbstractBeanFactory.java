@@ -1,7 +1,8 @@
 package cn.vin.springframework.beans.factory.support;
 
 import cn.vin.springframework.beans.BeansException;
-import cn.vin.springframework.beans.factory.BeanFactory;=
+import cn.vin.springframework.beans.factory.BeanFactory;
+import cn.vin.springframework.beans.factory.config.BeanDefinition;
 
 /**
  *模板设计模式
@@ -10,14 +11,23 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
 
     @Override
     public Object getBean(String beanName) throws BeansException {
-        Object bean = getSingleton(beanName);
-        if (bean!=null){
-            return bean;
-        }
-        BeanDefinition beanDefinition = getBeanDefinition(beanName);
-        return createBean(beanName,beanDefinition);
+       return doGetBean(beanName,null);
     }
 
+    @Override
+    public Object getBean(String name, Object... args) throws BeansException {
+        return doGetBean(name,args);
+    }
+
+    protected <T> T doGetBean(final  String name,final  Object[] args){
+        Object bean = getSingleton(name);
+        if (bean!=null){
+            return (T)bean;
+        }
+        BeanDefinition beanDefinition = getBeanDefinition(name);
+        return (T)createBean(name,beanDefinition,args);
+
+    }
 
     /**
      * bean 对象类
@@ -34,6 +44,7 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
      * @return
      * @throws BeansException
      */
-    protected abstract Object createBean(String beanName, BeanDefinition beanDefinition) throws BeansException;
+
+    protected abstract Object createBean(String beanName, BeanDefinition beanDefinition,Object[] args ) throws BeansException;
 
 }
