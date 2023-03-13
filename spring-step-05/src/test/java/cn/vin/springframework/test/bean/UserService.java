@@ -9,8 +9,9 @@ public class UserService {
 
     private UserDao userDao;
 
-    public void queryUserInfo() {
+    public String queryUserInfo() {
         System.out.println("查询用户信息：" + userDao.queryUserName(uId));
+        return userDao.queryUserName(uId);
     }
 
     public String getuId() {
