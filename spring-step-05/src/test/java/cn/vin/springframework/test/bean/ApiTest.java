@@ -6,6 +6,7 @@ import cn.vin.srpingframework.beans.PropertyValues;
 import cn.vin.srpingframework.beans.factory.config.BeanDefinition;
 import cn.vin.srpingframework.beans.factory.config.BeanReference;
 import cn.vin.srpingframework.beans.factory.support.DefaultListableBeanFactory;
+import cn.vin.srpingframework.beans.factory.xml.XmlBeanDefinitionReader;
 import cn.vin.srpingframework.core.io.DefaultResourceLoader;
 import cn.vin.srpingframework.core.io.Resource;
 import org.junit.Before;
@@ -61,6 +62,25 @@ public class ApiTest {
         String s = IoUtil.readUtf8(inputStream);
         System.out.println("s = " + s);
 
+
+    }
+
+    @Test
+    public void test_xml(){
+
+        //1、初始化beanfactory
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+
+        //2、读取配置文件&注册bean
+        XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(beanFactory);
+
+        xmlBeanDefinitionReader.loadBeanDefinitions("classpath:spring.xml");
+
+        //3、获取bean对象调用方法
+        UserService userService = beanFactory.getBean("userService", UserService.class);
+
+        String s = userService.queryUserInfo();
+        System.out.println("s = " + s);
 
     }
 

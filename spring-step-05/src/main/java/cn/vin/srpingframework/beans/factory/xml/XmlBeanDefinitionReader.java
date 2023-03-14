@@ -19,7 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class XmlBeanDefinitionReader  extends AbstractBeanDefinitionReader {
-    protected XmlBeanDefinitionReader(BeanDefinitionRegistry registry) {
+    public XmlBeanDefinitionReader(BeanDefinitionRegistry registry) {
         super(registry);
     }
 
@@ -89,16 +89,16 @@ public class XmlBeanDefinitionReader  extends AbstractBeanDefinitionReader {
 
             //读取bean属性
             for (int j = 0; j <bean.getChildNodes().getLength() ; j++) {
-                if (!(bean.getChildNodes().item(i) instanceof  Element)){
+                if (!(bean.getChildNodes().item(j) instanceof  Element)){
                     continue;
                 }
-                if (!"property".equals(bean.getChildNodes().item(i).getNodeName())){
+                if (!"property".equals(bean.getChildNodes().item(j).getNodeName())){
                     continue;
                 }
 
                 //解析标签：property
 
-                Element property= (Element)bean.getChildNodes().item(i);
+                Element property= (Element)bean.getChildNodes().item(j);
                 String attrName = property.getAttribute("name");
                 String attrValue = property.getAttribute("value");
                 String attrRef = property.getAttribute("ref");
