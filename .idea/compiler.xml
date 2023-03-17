@@ -20,7 +20,7 @@
       <module name="spring-step-03" target="1.5" />
       <module name="spring-step-04" target="1.5" />
       <module name="spring-step-05" target="1.5" />
-      <module name="spring-step-06" target="1.5" />
+      <module name="spring-step-06" target="1.8" />
       <module name="sring-step-01" target="1.5" />
     </bytecodeTargetLevel>
   </component>

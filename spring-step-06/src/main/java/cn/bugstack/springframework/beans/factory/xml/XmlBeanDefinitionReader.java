@@ -58,7 +58,9 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
     @Override
     public void loadBeanDefinitions(String location) throws BeansException {
         ResourceLoader resourceLoader = getResourceLoader();
+        //新建一个加载资源的类
         Resource resource = resourceLoader.getResource(location);
+        //资源的类获取一下
         loadBeanDefinitions(resource);
     }
 
